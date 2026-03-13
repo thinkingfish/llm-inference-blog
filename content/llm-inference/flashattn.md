@@ -62,7 +62,7 @@ multi-head attention and grouped-query attention.
 
 ## Additional References
 
-1. [How FlashAttention Accelerates Generative AI Revolution](https://www.youtube.com/watch?v=gBMO1JZav44)
+1. [How FlashAttention Accelerates Generative AI Revolution (Video)](https://www.youtube.com/watch?v=gBMO1JZav44)
 1. [Reimplementing FlashAttention for performance and giggles](https://aminediro.com/posts/flash_attn/)
 1. [Flash Attention From Scratch](https://lubits.ch/flash/)
 
