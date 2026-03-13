@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language }}">
+<head>{{ partial "head.html" . }}</head>
+<body>
+  <div class="container">
+    <aside>{{ partial "nav.html" . }}</aside>
+    <main>{{- block "main" . }}{{ end }}</main>
+  </div>
+</body>
+</html>

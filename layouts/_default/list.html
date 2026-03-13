@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ with .Description }}<p>{{ . }}</p>{{ end }}
+<ul class="chapter-list">
+  {{ range .RegularPages.ByWeight }}
+  <li>
+    <div class="chapter-content">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      {{ with .Description }}<small>{{ . }}</small>{{ end }}
+    </div>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

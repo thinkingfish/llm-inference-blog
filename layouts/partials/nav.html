@@ -1,0 +1,15 @@
+<div class="nav-desktop">
+  <a href="{{ site.Home.RelPermalink }}"><strong>{{ site.Title }}</strong></a>
+  {{ partial "nav-sections.html" . }}
+</div>
+
+<details class="nav-mobile">
+  <summary>
+    <span class="nav-mobile-label">Contents</span>
+    <span class="nav-mobile-toggle" aria-hidden="true"></span>
+  </summary>
+  <div class="nav-mobile-panel">
+    <a class="nav-mobile-home" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+    {{ partial "nav-sections.html" . }}
+  </div>
+</details>

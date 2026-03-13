@@ -1,0 +1,23 @@
+[build]
+  command = 'hugo --gc --minify --baseURL "$URL"'
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.123.7"
+  HUGO_ENV = "production"
+
+[context.deploy-preview]
+  command = 'hugo --gc --minify --baseURL "$DEPLOY_PRIME_URL"'
+
+[context.branch-deploy]
+  command = 'hugo --gc --minify --baseURL "$DEPLOY_PRIME_URL"'
+
+[[headers]]
+  for = "/css/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/vendor/katex/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
