@@ -1,4 +1,10 @@
-public/
+# Astro
+dist/
+node_modules/
+.astro/
+.netlify/
+
+# Hugo (legacy)
 resources/
 .hugo_build.lock
 .hugo_cache

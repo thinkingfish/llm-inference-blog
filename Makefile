@@ -1,10 +1,10 @@
-.PHONY: dev dev-subpath clean
+.PHONY: dev build clean
 
 dev:
-	hugo server --bind 0.0.0.0 --baseURL http://localhost:1313/ --appendPort=false
+	npm run dev
 
-dev-subpath:
-	hugo server --bind 0.0.0.0 --baseURL http://localhost:1313/book/ --appendPort=false
+build:
+	npm run build
 
 clean:
-	rm -rf public resources
+	rm -rf dist node_modules/.astro

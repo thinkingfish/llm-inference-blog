@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const chapters = (await getCollection('llm-inference'))
+  .sort((a, b) => (a.data.weight ?? 999) - (b.data.weight ?? 999));
+
+const sections = [
+  {
+    name: 'LLM Inference',
+    href: '/llm-inference/',
+    pages: chapters.map(ch => ({
+      title: ch.data.title,
+      href: `/llm-inference/${ch.id}/`,
+    })),
+  },
+];
+---
+<div class="nav-desktop">
+  <a href="/"><strong>Ramblings</strong></a>
+  {sections.map(section => (
+    <div class="nav-section">
+      <a href={section.href}>{section.name}</a>
+      <ul>
+        {section.pages.map(page => (
+          <li>
+            <a href={page.href} class:list={[{ active: currentPath === page.href }]}>
+              {page.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+
+<details class="nav-mobile">
+  <summary>
+    <span class="nav-mobile-label">Contents</span>
+    <span class="nav-mobile-toggle" aria-hidden="true"></span>
+  </summary>
+  <div class="nav-mobile-panel">
+    <a class="nav-mobile-home" href="/">Ramblings</a>
+    {sections.map(section => (
+      <div class="nav-section">
+        <a href={section.href}>{section.name}</a>
+        <ul>
+          {section.pages.map(page => (
+            <li>
+              <a href={page.href} class:list={[{ active: currentPath === page.href }]}>
+                {page.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</details>

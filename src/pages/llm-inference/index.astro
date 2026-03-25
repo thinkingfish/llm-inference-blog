@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const chapters = (await getCollection('llm-inference'))
+  .sort((a, b) => (a.data.weight ?? 999) - (b.data.weight ?? 999));
+
+const title = 'LLM Inference';
+const description = 'An opinionated and incomplete survey of LLM inference and serving runtimes from a systems and infrastructure lens.';
+---
+<BaseLayout title={title} description={description}>
+  <h1>{title}</h1>
+  <p>{description}</p>
+  <ul class="chapter-list">
+    {chapters.map((ch) => (
+      <li>
+        <div class="chapter-content">
+          <a href={`/llm-inference/${ch.id}/`}>{ch.data.title}</a>
+          {ch.data.description && <small>{ch.data.description}</small>}
+        </div>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

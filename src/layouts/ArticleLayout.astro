@@ -1,0 +1,37 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  description?: string;
+  id: string;
+}
+
+const { title, description, id } = Astro.props;
+
+const chapters = (await getCollection('llm-inference'))
+  .sort((a, b) => (a.data.weight ?? 999) - (b.data.weight ?? 999));
+
+const currentIndex = chapters.findIndex(ch => ch.id === id);
+const prev = currentIndex > 0 ? chapters[currentIndex - 1] : null;
+const next = currentIndex < chapters.length - 1 ? chapters[currentIndex + 1] : null;
+---
+<BaseLayout title={title} description={description}>
+  <article>
+    <h1>{title}</h1>
+    <slot />
+  </article>
+  <nav class="page-nav">
+    {prev && (
+      <a class="page-nav-prev" href={`/llm-inference/${prev.id}/`}>
+        &larr; {prev.data.title}
+      </a>
+    )}
+    {next && (
+      <a class="page-nav-next" href={`/llm-inference/${next.id}/`}>
+        {next.data.title} &rarr;
+      </a>
+    )}
+  </nav>
+</BaseLayout>

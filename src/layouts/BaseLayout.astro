@@ -1,0 +1,41 @@
+---
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  isHome?: boolean;
+}
+
+const siteTitle = 'Ramblings';
+const { title, description, isHome = false } = Astro.props;
+const pageTitle = isHome ? siteTitle : `${title} | ${siteTitle}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{pageTitle}</title>
+  {description && <meta name="description" content={description} />}
+  <link rel="canonical" href={canonicalURL.href}>
+  <meta property="og:site_name" content={siteTitle}>
+  <meta property="og:title" content={title}>
+  <meta property="og:url" content={canonicalURL.href}>
+  <meta property="og:type" content={isHome ? 'website' : 'article'}>
+  {description && <meta property="og:description" content={description} />}
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+</head>
+<body>
+  <div class="container">
+    <aside>
+      <Nav currentPath={Astro.url.pathname} />
+    </aside>
+    <main>
+      <slot />
+    </main>
+  </div>
+</body>
+</html>

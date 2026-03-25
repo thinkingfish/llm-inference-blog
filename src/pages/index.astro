@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Ramblings';
+const description = 'LLM inference infrastructure for a systems audience.';
+---
+<BaseLayout title={title} description={description} isHome={true}>
+  <h1>LLM Inference Infrastructure</h1>
+
+  <p>
+    This is an opinionated discussion of the basics of LLM inference and the
+    ecosystem of serving runtimes powering inference today, from a systems design
+    perspective. It was originally written internally at <a href="https://iop.systems/">IOP
+    Systems</a>, but thanks to some gentle <s>arm-twisting</s>
+    persuasion, it has been posted in case it is useful to anyone. (Thanks for the
+    push, <a href="https://yaoyue.org/">Yao</a>!)
+  </p>
+
+  <p>
+    The intended audience is systems and infrastructure developers who want to
+    understand the systems behind LLM inference and serving those requests at
+    scale, but have little to no machine learning knowledge. It focuses largely on
+    the performance aspects of these systems, specifically around techniques to
+    scale serving, reduce latency, or drive better efficiency and hardware
+    utilization.
+  </p>
+
+  <p>
+    This is not intended to be comprehensive or complete and favours a broad
+    intuition over mathematical rigour. That said, it is best thought of as a
+    living document and corrections and contributions to improve clarity or scope
+    are welcome <a href="https://github.com/mihirn/blog">here</a>.
+  </p>
+
+  <p><a href="/llm-inference/">Start reading →</a></p>
+</BaseLayout>
