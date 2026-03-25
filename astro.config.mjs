@@ -4,7 +4,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
-  site: 'http://localhost:4321',
+  site: 'https://inference.systems',
   output: 'static',
   publicDir: 'static',
   integrations: [mdx()],
