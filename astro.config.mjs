@@ -6,6 +6,7 @@ import rehypeKatex from 'rehype-katex';
 export default defineConfig({
   site: 'http://localhost:4321',
   output: 'static',
+  publicDir: 'static',
   integrations: [mdx()],
   markdown: {
     remarkPlugins: [remarkMath],
